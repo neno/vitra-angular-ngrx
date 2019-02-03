@@ -1,0 +1,16 @@
+<!-- <ul class="navigation">
+  <li class="navigation-item" *ngFor="let site of sites">
+    <a [routerLink]="[site.path]" class="content-box delimit navigation-item-link">
+      <span class="navigation-item-link-text">{{translations | translate:site.name}}</span>
+      <vitra-icon class="navigation-item-link-icon" [icon]="'Vitra_Next'"></vitra-icon>
+    </a>
+  </li>
+</ul> -->
+<ul class="navigation">
+  <li class="navigation-item" *ngFor="let site of sites">
+    <a (click)="emitNavigateTo(site.path)" class="content-box delimit navigation-item-link">
+      <span class="navigation-item-link-text">{{translations | translate:site.name}}</span>
+      <vitra-icon class="navigation-item-link-icon" [icon]="'Vitra_Next'"></vitra-icon>
+    </a>
+  </li>
+</ul>

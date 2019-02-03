@@ -1,0 +1,25 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+.picture {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+
+  @include tablet {
+    height: $standard-image-t;
+  }
+}
+
+.image {
+  display: inline-block;
+  width: $standard-image-m;
+  height: $standard-image-m;
+  object-fit: contain;
+
+  @include tablet {
+    width: $standard-image-t;
+    height: $standard-image-t;
+  }
+
+}

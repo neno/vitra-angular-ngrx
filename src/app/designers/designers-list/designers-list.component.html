@@ -1,0 +1,4 @@
+<vitra-sticky-header [showNavigation]="showNavigation$ | async" [hasLinkBack]="false" (toggleNavigation)="toggleNavigation()">
+  <vitra-ui-heading class="list-heading" [heading]="(translations | async) | translate:(site | async).name"></vitra-ui-heading>
+</vitra-sticky-header>
+<vitra-ui-list class="image-fit-cover no-first-top-border" [items]="listItems$ | async"></vitra-ui-list>

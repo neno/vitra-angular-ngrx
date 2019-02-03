@@ -1,0 +1,19 @@
+<vitra-sticky-header [showNavigation]="showNavigation$ | async" [hasLinkBack]="true" (toggleNavigation)="toggleNavigation()"
+  (goBack)="goToList()">
+  <vitra-ui-heading [class]="locationCountry.length ? 'no-margin' : ''" [heading]="manufacturer.company"></vitra-ui-heading>
+  <vitra-ui-byline class="no-margin" *ngIf="locationCountry.length" [text]="locationCountry"></vitra-ui-byline>
+</vitra-sticky-header>
+
+
+<div *ngIf="manufacturer.text">
+  <div class="content-box">
+    <div class="inner">
+      <vitra-ui-text [text]="manufacturer.text"></vitra-ui-text>
+    </div>
+  </div>
+</div>
+
+<div [class]="manufacturer.text ? 'delimit' : ''">
+  <vitra-detail-relations *ngIf="manufacturer.productIds.length" [items]="productsListItems$ | async" [translations]="translations$ | async"
+    headingTranslationKey="manufacturerDetails.relatedProducts" parentPath="/products"></vitra-detail-relations>
+</div>

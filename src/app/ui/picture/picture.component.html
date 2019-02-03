@@ -1,0 +1,4 @@
+<picture class="picture">
+  <source *ngFor="let src of set.reverse()" media="(min-width: {{src.minWidth}}px)" [srcset]="src.srcset">
+  <img class="image" [src]="defaultImageUrl" [alt]="alt">
+</picture>

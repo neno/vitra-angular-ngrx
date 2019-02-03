@@ -1,0 +1,16 @@
+// @import "../../../assets/styles/settings.scss";
+:host {
+  line-height: 0;
+}
+
+:host(.dark) .icon {
+  ::ng-deep svg {
+    fill: #646464;
+  }
+}
+
+:host(.black) .icon {
+  ::ng-deep svg {
+    fill: #000;
+  }
+}

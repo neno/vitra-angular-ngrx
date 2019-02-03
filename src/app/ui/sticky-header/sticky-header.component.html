@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="bar">
+    <div class="link-back" *ngIf="hasLinkBack">
+      <button class="toggle-navigation" (click)="goBack.emit()">
+        <vitra-icon icon="Vitra_Previous"></vitra-icon>
+      </button>
+    </div>
+    <div class="header">
+      <ng-content></ng-content>
+    </div>
+    <div class="toggle-nav">
+      <button class="toggle-navigation" (click)="emitToggleNavigation()">
+        <vitra-icon class="dark" [icon]="showNavigation? 'Vitra_MenuOpen' : 'Vitra_Menu'"></vitra-icon>
+      </button>
+    </div>
+  </div>
+</div>

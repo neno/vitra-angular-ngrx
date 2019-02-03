@@ -1,0 +1,329 @@
+@mixin hide-visually {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function px2em($px, $contextPXSize : $base-font-size) {
+    $px: strip-units($px);
+    $contextPXSize: strip-units($contextPXSize);
+    @return ( $px / $contextPXSize ) * 1em;
+}
+
+
+@function px2percent ($px,$contextSize: $base-font-size) {
+    @return ( $px / $contextSize) * 100%;
+}
+
+@function px2rem($px) {
+    $px: strip-units($px);
+    @return ( $px / 10 ) * 1rem;
+    @return ( $px / $base-font-size ) * 1rem;
+}
+$imgDir: '../images/' !default;
+@function image-url($url) {
+    @return url("#{$imgDir}#{$url}");
+}
+$fontsDir: '../fonts/' !default;
+@function fonts-url($url) {
+    @return url("#{$fontsDir}#{$url}");
+}
+@mixin reset-box-model {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+@mixin font-size($px) {
+    font-size: ($px);
+    font-size: px2rem($px);
+}
+
+@mixin display-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+@mixin flex-wrap($value: nowrap) {
+    -webkit-flex-wrap: $value;
+    -moz-flex-wrap: $value;
+    @if $value == nowrap {
+        -ms-flex-wrap: none;
+    } @else {
+        -ms-flex-wrap: $value;
+    }
+    flex-wrap: $value;
+}
+@mixin height($px) {
+    height: ($px);
+    height: px2rem($px);
+}
+
+@mixin relative-line-height($line-height, $font-size) {
+    line-height: $line-height/$font-size;
+}
+
+@mixin line-height($px) {
+    line-height: ($px);
+    line-height: px2rem($px);
+}
+
+@mixin attr-px2rem($attr, $px) {
+    $attr: $px;
+    $attr: px2rem($px);
+}
+
+@mixin block-margin($t, $r, $b, $l) {
+    margin: 0;
+    @if $t > 0{
+        margin-top: $t;
+        margin-top: px2rem($t);
+    }
+    @if $r > 0{
+        margin-right: $r;
+        margin-right: px2rem($r);
+    }
+    @if $b > 0{
+        margin-bottom: $b;
+        margin-bottom: px2rem($b);
+    }
+    @if $l > 0{
+        margin-left: $l;
+        margin-left: px2rem($l);
+    }
+}
+
+
+// font-size:0 inline-block margin fix
+@mixin webkit-inline-block-fix{
+    font-family: 'empty-font';
+    > * {
+        font-family: $base-font-family;
+    }
+}
+
+// WebKit font-smoothing
+@mixin font-smoothing($value-1: antialiased, $value-2: grayscale) {
+  -webkit-font-smoothing: $value-1;
+  -moz-osx-font-smoothing: $value-2;
+}
+
+
+// ellipsis
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin hlist($m: 0) {
+    list-style: none;
+    &, & > li{
+        padding: 0;
+    }
+
+    margin-left:-$m;
+
+    & > li {
+        display: inline-block;
+        margin-left: $m;
+    }
+    @include webkit-inline-block-fix;
+}
+
+@mixin vlist {
+    list-style: none;
+    &, & > li{
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@mixin default-transition-speed($s: 0.5s){
+    -webkit-transition: -webkit-transform $s;
+    transition: transform $s;
+}
+
+@mixin reset-component-height {
+    min-height: auto !important;
+    height: auto !important;
+}
+
+@mixin reset-component-float {
+    float: none;
+    width: auto;
+    margin: 0;
+}
+
+@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+    color: $normal;
+    @if $visited {
+        &:visited {
+            color: $visited;
+        }
+    }
+    @if $focus {
+        &:focus {
+            color: $focus;
+        }
+    }
+    @if $hover {
+        &:hover {
+            color: $hover;
+        }
+    }
+    @if $active {
+        &:active {
+            color: $active;
+        }
+    }
+}
+
+@mixin no-bullet {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    &:before{
+        content: none;
+    }
+}
+
+@mixin no-bullets {
+    list-style: none;
+    padding-left: 0;
+    & > li {
+        @include no-bullet;
+    }
+}
+
+@mixin reset-list {
+    &, & > li {
+        margin: 0;
+        padding: 0;
+    }
+    @include no-bullets;
+}
+
+
+@mixin default-layout-box($margin-tb: 10px, $margin-rl: 10px) {
+    padding: $margin-tb $margin-rl;
+
+}
+
+
+@mixin bg-overlay($color: white, $alpha: .5) {
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: $color;
+        opacity: $alpha;
+        z-index: -1;
+    }
+}
+
+@mixin font-face($fontName) {
+    @font-face {
+        font-family: '' + $fontName + '';
+        src:url('../fonts/' + $fontName +'.eot');
+        src:url('../fonts/' + $fontName + '.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/' + $fontName + '.woff') format('woff'),
+            url('../fonts/' + $fontName + '.ttf') format('truetype'),
+            url('../fonts/' + $fontName + '.svg#' + $fontName + '') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+@mixin default-ico{
+    font-family: "AlteLeipziger_Hallesche" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+
+    &:before,
+    &:after {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    // line-height: 1;
+    @include font-smoothing(antialiased, auto);
+}
+
+$ico-default-font-size: 25px !default;
+@mixin ico($letter, $size: $ico-default-font-size, $before: true, $after: false) {
+    display: inline-block;
+    @if $before{
+        &:before{
+            content: $letter;
+            @include font-size($size);
+        }
+    }
+    @if $after{
+        &:after{
+            content: $letter;
+            @include font-size($size);
+        }
+    }
+}
+
+@mixin basic-link($color: black) {
+    padding: 0;
+    text-decoration: none;
+
+    &,
+    html body & {
+        @include link-colors($color, $color, $color, $color, $color);
+    }
+
+    &:before {
+        content: none;
+    }
+}
+
+
+@mixin default-button($bg, $color, $font-weight, $padding) {
+//    @include basic-link;
+    color: inherit;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+
+    background: $bg;
+    padding: $padding;
+    font-weight: $font-weight;
+    cursor: pointer;
+    margin: 0 $padding 0 0;
+    width: auto;
+    box-sizing: content-box;
+
+    &:first-child{
+        margin-right: 0;
+    }
+
+    @include link-colors($color, $color, $color, $color, $color);
+}
+
+@mixin ico-button($btn-size) {
+    padding: 0;
+    width: $btn-size;
+    height: $btn-size;
+    line-height: $btn-size;
+    margin: 0;
+    vertical-align: middle;
+}

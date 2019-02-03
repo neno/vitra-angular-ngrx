@@ -1,0 +1,146 @@
+import { Component, Inject, OnDestroy } from '@angular/core';
+import { Router, RouterEvent } from '@angular/router';
+import { WINDOW } from './tokens';
+import { Store, select } from '@ngrx/store';
+import { AppState } from './reducers';
+import { Observable, Subscription, BehaviorSubject } from 'rxjs';
+import {
+  selectShowNavigation,
+  selectCurrentLang,
+  selectAvailableLanguages,
+  selectSites
+} from './ui/store/ui.selectors';
+import {
+  ToggleNavigation,
+  ChangeLanguage,
+  InitialDataLoaded
+} from './ui/store/ui.actions';
+import { Language, Site, SiteMap, Translations } from './ui/ui.model';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { FormGroup, FormControl } from '@angular/forms';
+import { FilteredProductsRequested } from './products/store/product.actions';
+import { FilteredDesignersRequested } from './designers/store/designer.actions';
+import { FilteredManufacturersRequested } from './manufacturers/store/manufacturer.actions';
+import { TranslationService } from './translation.service';
+import { isMobile } from './shared/utils';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements OnDestroy {
+  public showNavigation: Observable<boolean>;
+  public sites: Observable<Site[]>;
+  public languages: Observable<Language[]>;
+  public currentLanguage: Observable<Language>;
+  public searchForm: FormGroup;
+  public translations: Observable<Translations>;
+  public showResetSearchForm = new BehaviorSubject(false);
+
+  private activeComponent: string;
+  private searchFormSubscription: Subscription;
+
+  constructor(
+    @Inject(WINDOW) private window: Window,
+    private store: Store<AppState>,
+    private translationService: TranslationService,
+    private router: Router
+  ) {
+    // Todo: initial data load should be dispatched with an action
+    this.translationService.setTranslations('de');
+    this.store.dispatch(new InitialDataLoaded());
+
+    this.showNavigation = this.store.pipe(select(selectShowNavigation));
+    this.currentLanguage = this.store.pipe(select(selectCurrentLang));
+    this.languages = this.store.pipe(select(selectAvailableLanguages));
+    this.translations = this.translationService.getTranslations();
+
+    this.sites = this.store.pipe(
+      select(selectSites),
+      map((sites: SiteMap) =>
+        Object.values(sites).filter((site: Site) => site.id !== 'Home')
+      )
+    );
+
+    this.searchForm = new FormGroup({
+      searchString: new FormControl(null)
+    });
+
+    this.observeSearchFormChanges();
+  }
+
+  ngOnDestroy() {
+    this.searchFormSubscription.unsubscribe();
+    this.showResetSearchForm.complete();
+  }
+
+  public onActivate(e: RouterEvent): void {
+    this.activeComponent = e.constructor.name;
+    if (this.activeComponent.includes('Detail')) {
+      this.scrollToTop();
+    }
+  }
+
+  public navigateTo(path: string) {
+    this.resetSearchForm();
+    this.router.navigate([path]);
+    this.scrollToTop();
+    if (isMobile(this.window)) {
+      this.toggleNavigation();
+    }
+  }
+
+  public toggleNavigation() {
+    this.store.dispatch(new ToggleNavigation());
+  }
+
+  public changeLanguage(lang: Language) {
+    this.store.dispatch(new ChangeLanguage({ lang }));
+  }
+
+  public submitSearchForm() {
+    this.filterDataAccordingToActiveComponent(
+      this.searchForm.get('searchString').value
+    );
+    if (isMobile(this.window)) {
+      this.toggleNavigation();
+    }
+  }
+
+  public resetSearchForm() {
+    this.searchForm.reset();
+  }
+
+  private observeSearchFormChanges() {
+    this.searchFormSubscription = this.searchForm
+      .get('searchString')
+      .valueChanges.pipe(
+        debounceTime(300),
+        distinctUntilChanged()
+      )
+      .subscribe((val: string) => {
+        this.filterDataAccordingToActiveComponent(val);
+        this.showResetSearchForm.next(!!val);
+      });
+  }
+
+  private filterDataAccordingToActiveComponent(filter: string) {
+    // only filter if there is a query string (>2) or if it is reset
+    if ((filter && filter.length > 2) || !filter) {
+      if (this.activeComponent.includes('Product')) {
+        this.store.dispatch(new FilteredProductsRequested({ filter }));
+      }
+      if (this.activeComponent.includes('Designer')) {
+        this.store.dispatch(new FilteredDesignersRequested({ filter }));
+      }
+      if (this.activeComponent.includes('Manufacturer')) {
+        this.store.dispatch(new FilteredManufacturersRequested({ filter }));
+      }
+    }
+  }
+
+  private scrollToTop() {
+    this.window.scroll(0, 0);
+  }
+}

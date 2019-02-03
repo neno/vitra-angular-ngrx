@@ -1,0 +1,12 @@
+<div class="content-box">
+  <form [formGroup]="searchForm" class="search" (ngSubmit)="submitSearchForm.emit()">
+    <vitra-icon class="search-icon" [icon]="'Vitra_Search'"></vitra-icon>
+    <input class="search-input" type="text" formControlName="searchString" [placeholder]="translations | translate:'search.placeholder'">
+    <button (click)="resetSearchForm.emit()" type="button">
+      <vitra-icon *ngIf="showResetSearchForm" class="next-icon" [icon]="'Vitra_Close'"></vitra-icon>
+    </button>
+    <button class="submit" type="submit">
+      <vitra-icon class="next-icon" [icon]="'Vitra_Next'"></vitra-icon>
+    </button>
+  </form>
+</div>

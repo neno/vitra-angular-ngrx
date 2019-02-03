@@ -1,0 +1,135 @@
+/* Media Settings */
+
+$mobile-first: true;
+$mq-mobile: 1px;
+$mq-xxs: 350px;
+$mq-tablet: 640px;
+$mq-desktop: 1024px;
+
+/*
+ * Sizes
+ */
+
+$gutter: 16px;
+
+$thumb-size-m: 71px;
+$thumb-size-t: 95px;
+$thumb-size-d: 95px;
+$icon-size-s: 24px;
+$icon-size-t: 32px;
+$button-size: 32px;
+
+$nav-width-t: 262px;
+$nav-width-d: 384px;
+$max-content-width: 600px;
+$max-content-width-t: 600px;
+$page-width-t: 768px;
+$page-width-d: 100%;
+
+$nav-item-height-s: 40px;
+$nav-item-height-t: 48px;
+
+$search-form-height-s: 72px;
+$search-form-height-t: 48px;
+$search-form-btn-height-s: 56px;
+$search-form-btn-height-t: 40px;
+
+$page-header-icon-size-s: 48px;
+$page-header-icon-size-t: 56px;
+
+$page-header-height-s: 72px;
+$page-header-height-t: 112px;
+
+$detail-header-height-s: 88px;
+$detail-header-height-t: 124px;
+
+$detail-section-header-height-s: 48px;
+$detail-section-header-height-t: 72px;
+
+$content-header-icon-size-s: 32px;
+$content-header-icon-size-t: 40px;
+
+$list-icon-size: 36px;
+
+$standard-image-m: 320px;
+$standard-image-t: 640px;
+
+/* Slider */
+$slide-height-s: 170px;
+$slide-width-s: 256px;
+
+$slide-height-t: 440px;
+$slide-height-t-active-nav: 350px;
+
+/* Overlay */
+$closeButtonSize-s: 36px;
+$closeButtonSize-t: 48px;
+
+/*
+ * Colors
+ */
+$black: black;
+$dove-gray: #646464;
+$nobel: #b4b4b4;
+$silver: #c4c4c4;
+$alto: #d4d4d4;
+
+$bg-color: white;
+
+/*
+ * Font sizes
+ */
+
+/* default */
+$f-size-default-s: 16px;
+$l-height-default-s: 20px;
+$f-size-default-t: 22px;
+$l-height-default-t: 28px;
+$f-size-default-d: $f-size-default-t;
+$l-height-default-d: $l-height-default-t;
+
+$f-margin-bottom-s: 8px;
+$f-margin-bottom-t: 12px;
+$f-margin-bottom-d: $f-margin-bottom-t;
+
+/* heading */
+$f-size-heading-s: 24px;
+$l-height-heading-s: 32px;
+$f-size-heading-t: 33px;
+$l-height-heading-t: 45px;
+$f-size-heading-d: $f-size-heading-t;
+$l-height-heading-d: $l-height-heading-t;
+
+/* caption */
+$f-size-caption-s: 12px;
+$l-height-caption-s: 15px;
+$f-size-caption-t: 18px;
+$l-height-caption-t: 24px;
+$f-size-caption-d: $f-size-caption-t;
+$l-height-caption-d: $l-height-caption-t;
+
+/* number / category */
+$f-size-cat-s: 12px;
+$l-height-cat-s: 15px;
+$f-size-cat-t: 18px;
+$l-height-cat-t: 24px;
+$f-size-cat-d: $f-size-cat-t;
+$l-height-cat-d: $l-height-cat-t;
+
+/* Extended Main */
+$f-size-extended-search-s: 15.5px;
+$f-size-extended-search-t: 18px;
+$f-size-extended-search-d: $f-size-extended-search-t;
+
+/* Font Size Search Schaudepot */
+
+$f-size-search-digit-s: 68px;
+$l-height-search-digit-s: 80px;
+$search-digit-height-s: $l-height-search-digit-s;
+
+$f-size-search-digit-t: 62px;
+$l-height-search-digit-t: 72px;
+$search-digit-height-t: $l-height-search-digit-t;
+
+/**/
+$animation-speed: .5s;

@@ -1,0 +1,15 @@
+<div [class]="isSidebarVisible ? 'sidebar is-visible' : 'sidebar'">
+  <div class="banner">
+    <vitra-logo class="logo"></vitra-logo>
+    <div class="toggle-nav">
+      <button class="toggle-navigation" (click)="toggleNavigation.emit()">
+        <vitra-icon class="dark" [icon]="isSidebarVisible? 'Vitra_MenuOpen' : 'Vitra_Menu'"></vitra-icon>
+      </button>
+    </div>
+  </div>
+
+  <vitra-search [searchForm]="searchForm" [showResetSearchForm]="showResetSearchForm" [translations]="translations"
+    (submitSearchForm)="submitSearchForm.emit()" (resetSearchForm)="resetSearchForm.emit()"></vitra-search>
+  <vitra-navigation [sites]="sites" [translations]="translations" (navigateTo)="navigateTo.emit($event)"></vitra-navigation>
+  <vitra-language-selector [languages]="languages" [currentLanguage]="currentLanguage" (changeLanguage)="emitChangeLanguage($event)"></vitra-language-selector>
+</div>

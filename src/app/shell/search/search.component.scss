@@ -1,0 +1,28 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+.search {
+  display: flex;
+  padding-top: $gutter/2;
+  padding-bottom: 7px;
+  color: $black;
+}
+
+.search-icon,
+.next-icon {
+  flex: 0;
+}
+
+.search-icon {
+  margin: 0 $gutter/2 0 -5px;
+}
+
+.search-input {
+  flex: 1;
+}
+
+@include tablet {
+  .submit {
+    display: none;
+  }
+}

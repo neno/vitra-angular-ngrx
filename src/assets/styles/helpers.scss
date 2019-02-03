@@ -1,0 +1,71 @@
+@import 'settings';
+@import 'mediaqueries';
+@import 'mixins';
+
+/* hidden contents */
+%is-visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+%is-visible {
+    display: inherit !important;
+}
+
+%is-visible-mobile {
+    display: none !important;
+
+    @include mobile {
+        display: inherit !important;
+    }
+}
+
+%is-hidden-mobile {
+    display: inherit !important;
+
+    @include mobile {
+        display: none !important;
+    }
+}
+
+%is-visible-tablet {
+    display: none !important;
+
+    @include tablet {
+        display: inherit !important;
+    }
+}
+
+%is-hidden-tablet {
+    display: inherit !important;
+
+    @include tablet {
+        display: none !important;
+    }
+}
+
+%is-hidden {
+    display: none !important;
+}
+
+%is-visible-print{
+    display: none;
+    @include print{
+        display: inherit;
+    }
+}
+
+@include print {
+    %is-visible-print {
+        display: block !important;
+    }
+    %is-hidden-print {
+        display: none !important;
+    }
+}

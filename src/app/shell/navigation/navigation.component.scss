@@ -1,0 +1,38 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+.navigation,
+.navigation-item {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation-item-link {
+  display: flex;
+  padding-top: $gutter/2;
+  padding-bottom: 7px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.navigation-item-link-text {
+  display: block;
+  flex-grow: 1;
+}
+
+.navigation-item-link-icon {
+  line-height: 0;
+}
+
+@include mobile {
+  .content-box {
+    max-width: $mq-tablet;
+  }
+}
+
+@include tablet {
+  .navigation-item-link {
+    line-height: 32px;
+  }
+}

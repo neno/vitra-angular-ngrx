@@ -1,0 +1,169 @@
+@import 'settings';
+@import 'mediaqueries';
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+$base-font-size: 16px !default;
+
+@mixin link-colors($link, $hover:"", $active:"", $visited:"") {
+  @if $hover=="" {
+    $hover: $link;
+  }
+
+  @if $active=="" {
+    $active: $hover;
+  }
+
+  @if $visited=="" {
+    $visited: $link;
+  }
+
+  &,
+  &:link {
+    color: $link;
+  }
+
+  &:hover {
+    color: $hover;
+  }
+
+  &:active {
+    color: $active;
+  }
+
+  &:visited {
+    color: $visited;
+  }
+}
+
+@mixin reset-box-model {
+  float: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+@mixin no-bullets {
+
+  &,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+@mixin icon($w: $icon-size-s, $h: $nav-item-height-s, $color: $nobel) {
+  display: inline-block;
+  width: $w;
+  height: $h;
+  fill: $color;
+}
+
+@mixin nav-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: $nav-item-height-s;
+  padding: 0 $gutter;
+  margin-bottom: 0;
+  border-top: 1px solid $alto;
+  font-size: $f-size-heading-s;
+  line-height: $nav-item-height-s;
+  cursor: pointer;
+
+  @include tablet {
+    height: $nav-item-height-t;
+    line-height: $nav-item-height-t;
+  }
+
+}
+
+@mixin flex-display($height) {
+  display: flex;
+  align-items: center;
+  height: $height;
+}
+
+@mixin search-field {
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 1%;
+  color: $black;
+  border: none;
+  box-shadow: none;
+  padding: 0 6px;
+  margin: 0 1px 0 0;
+  outline: none;
+  appearance: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+
+@mixin toolbar {
+  @include nav-link;
+  @include font-size-and-line-height($f-size-default-s, $l-height-default-s);
+  margin: 0;
+  padding: 0;
+
+  :global(.content-box) {
+    margin: 0;
+  }
+
+  span,
+  button,
+  a {
+    height: $nav-item-height-s;
+    line-height: $nav-item-height-s;
+    color: $nobel;
+    background: transparent;
+    display: inline-block;
+  }
+
+  svg {
+    width: 24px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    fill: $nobel;
+  }
+
+  @include tablet {
+    @include font-size-and-line-height($f-size-default-t, $l-height-default-t);
+
+    :global(.content-box) {
+      margin: 0 auto;
+    }
+
+    span,
+    button,
+    a {
+      height: $nav-item-height-t;
+      line-height: $nav-item-height-t;
+    }
+
+    svg {
+      right: $gutter;
+    }
+  }
+}
+
+@mixin heading {
+  font-weight: normal;
+  font-size: $f-size-heading-s;
+  line-height: $l-height-heading-s;
+
+  @include tablet {
+    font-size: $f-size-heading-t;
+    line-height: $l-height-heading-t;
+  }
+}

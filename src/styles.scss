@@ -1,0 +1,271 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/settings.scss";
+@import "./assets/styles/mediaqueries.scss";
+@import "./assets/styles/mixins.scss";
+@import "./assets/styles/states.scss";
+
+
+@font-face {
+  font-family: vFutura-Regular;
+  src: url('assets/fonts/vfutura-regular.eot');
+  src: url('assets/fonts/vfutura-regular.woff') format('woff'),
+    url('assets/fonts/vfutura-regular.ttf') format('ttf');
+
+}
+
+@font-face {
+  font-family: vFutura-Medium;
+  src: url('assets/fonts/vfutura-medium.eot');
+  src: url('assets/fonts/vfutura-medium.woff') format('woff'),
+    url('assets/fonts/vfutura-medium.ttf') format('ttf');
+
+}
+
+@font-face {
+  font-family: vFutura-Light;
+  src: url('assets/fonts/vfutura-light.eot');
+  src: url('assets/fonts/vfutura-light.woff') format('woff'),
+    url('assets/fonts/vfutura-light.ttf') format('ttf');
+
+}
+
+@font-face {
+  font-family: vFutura-Bold;
+  src: url('assets/fonts/vfutura-bold.eot');
+  src: url('assets/fonts/vfutura-bold.woff') format('woff'),
+    url('assets/fonts/vfutura-bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: vFutura-Heavy;
+  src: url('assets/fonts/vfutura-heavy.eot');
+  src: url('assets/fonts/vfutura-heavy.woff') format('woff'),
+    url('assets/fonts/vfutura-heavy.ttf') format('ttf');
+
+}
+
+@font-face {
+  font-family: vNumber-Regular;
+  src: url('assets/fonts/VNumbers-Regular_web.eot');
+  src: url('assets/fonts/VNumbers-Regular_web.woff') format('woff'),
+    url('assets/fonts/VNumbers-Regular_web.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: vNumber-Light;
+  src: url('assets/fonts/VNumbers-Light_web.eot');
+  src: url('assets/fonts/VNumbers-Light_web.woff') format('woff'),
+    url('assets/fonts/VNumbers-Light_web.ttf') format('ttf');
+}
+
+/*
+ * Basic Styles
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+input {
+  font-size: 100%;
+  color: $black;
+  background: white;
+  font-family: "vFutura-Regular";
+}
+
+body,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+  font-weight: normal;
+  font-size: $f-size-default-s;
+  line-height: $l-height-default-s;
+}
+
+h1,
+.h1 {
+  font-weight: normal;
+  font-size: $f-size-heading-s;
+  line-height: $l-height-heading-s;
+}
+
+h2 {
+  margin: 21px 8px 11px 16px;
+  color: $nobel;
+
+  &.toggle-handle {
+    margin-top: 11px;
+  }
+}
+
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 0 $f-margin-bottom-s 0;
+}
+
+
+
+a {
+  @include link-colors($black);
+  text-decoration: none;
+}
+
+/*
+ * Forms and form elements
+ */
+
+button,
+input {
+  @include reset-box-model;
+  outline: none;
+  font-size: $f-size-default-s;
+  background: $bg-color;
+}
+
+button {
+  line-height: 0;
+  // width: $button-size;
+  // height: $button-size;
+  cursor: pointer;
+}
+
+dt {
+  font-size: $f-size-cat-s;
+  line-height: $l-height-cat-s;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: $nobel;
+}
+
+dd {
+  margin: 0 0 $gutter 0;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+input {
+  width: 100%;
+  // color: $nobel;
+  color: $black;
+  padding: 0 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+fieldset {
+  @include reset-box-model;
+}
+
+label {
+  cursor: pointer;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.content-box {
+  padding: 0 $gutter;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.delimit {
+  border-top: 1px solid $silver;
+}
+
+.icon {
+  width: $icon-size-s;
+  height: $icon-size-s;
+  display: inline-block;
+
+  svg {
+    fill: $nobel;
+  }
+}
+
+.logo .icon {
+  width: 54px;
+  height: 54px;
+}
+
+.inner {
+  margin: $gutter 0;
+}
+
+.section-title {
+  padding: $gutter*2 0 0;
+}
+
+@include tablet {
+
+  body,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+    font-size: $f-size-default-t;
+    line-height: $l-height-default-t;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0 0 $f-margin-bottom-t;
+  }
+
+  h1,
+  .h1 {
+    font-weight: normal;
+    font-size: $f-size-heading-s;
+    line-height: $l-height-heading-s;
+  }
+
+  button,
+  input {
+    font-size: $f-size-default-t;
+  }
+
+  dt {
+    font-size: $f-size-cat-t;
+    line-height: $l-height-cat-t;
+  }
+
+  .icon {
+    width: $icon-size-t;
+    height: $icon-size-t;
+  }
+
+  .logo .icon {
+    width: 62px;
+    height: 62px;
+  }
+}

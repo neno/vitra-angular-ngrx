@@ -1,0 +1,35 @@
+<section>
+  <div class="delimit">
+    <vitra-ui-heading class="toggle" (click)="toggleAttributes()">
+      <h2 class="toggle-handle">{{translations | translate:'productDetails.objectDetails'}}</h2>
+      <vitra-icon [icon]="showAttributes? 'Vitra_Up' : 'Vitra_Down'"></vitra-icon>
+    </vitra-ui-heading>
+  </div>
+
+  <div class="delimit" *ngIf="showAttributes">
+    <dl class="content-box">
+      <dt *ngIf="product.title">{{translations | translate:'productDetails.attributes.title'}}</dt>
+      <dd *ngIf="product.title">{{product.title}}</dd>
+      <dt *ngIf="product.designer">{{translations | translate:'productDetails.attributes.designer'}}</dt>
+      <dd *ngIf="product.designer">{{product.designer.name}}</dd>
+      <dt *ngIf="product.category">{{translations | translate:'productDetails.attributes.category'}}</dt>
+      <dd *ngIf="product.category">{{product.category}}</dd>
+      <dt *ngIf="product.dateDesigned">{{translations | translate:'productDetails.attributes.dateDesigned'}}</dt>
+      <dd *ngIf="product.dateDesigned">{{product.dateDesigned}}</dd>
+      <dt *ngIf="product.dateProduction">{{translations | translate:'productDetails.attributes.dateProduction'}}</dt>
+      <dd *ngIf="product.dateProduction">{{product.dateProduction}}</dd>
+      <dt *ngIf="product.dateFirstProduction">{{translations |
+        translate:'productDetails.attributes.dateFirstProduction'}}</dt>
+      <dd *ngIf="product.dateFirstProduction">{{product.dateFirstProduction}}</dd>
+      <dt *ngIf="product.dateFollowProduction">{{translations |
+        translate:'productDetails.attributes.dateFollowProduction'}}</dt>
+      <dd *ngIf="product.dateFollowProduction">{{product.dateFollowProduction}}</dd>
+      <dt *ngIf="product.material">{{translations | translate:'productDetails.attributes.material'}}</dt>
+      <dd *ngIf="product.material">{{product.material}}</dd>
+      <dt *ngIf="product.dimensions">{{translations | translate:'productDetails.attributes.dimensions'}}</dt>
+      <dd *ngIf="product.dimensions">{{product.dimensions}}</dd>
+      <dt *ngIf="product.inventoryNr">{{translations | translate:'productDetails.attributes.inventorNr'}}</dt>
+      <dd *ngIf="product.inventoryNr">{{product.inventoryNr}}</dd>
+    </dl>
+  </div>
+</section>

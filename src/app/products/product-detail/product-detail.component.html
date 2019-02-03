@@ -1,0 +1,33 @@
+<vitra-sticky-header [showNavigation]="showNavigation$ | async" [hasLinkBack]="true" (goBack)="goToList()"
+  (toggleNavigation)="toggleNavigation()">
+  <vitra-ui-list [items]="productSummary" class="is-header"></vitra-ui-list>
+</vitra-sticky-header>
+
+<div *ngIf="defaultImageUrl" class="default-image">
+  <vitra-ui-picture [set]="pictureSourceSet" [defaultImageUrl]="defaultImageUrl"></vitra-ui-picture>
+</div>
+<header class="header">
+  <vitra-ui-heading [heading]="product.title"></vitra-ui-heading>
+  <vitra-ui-byline *ngIf="product.designer" [text]="product.designer.name"></vitra-ui-byline>
+</header>
+
+<vitra-product-detail-attributes [product]="product" [translations]="translations$ | async"></vitra-product-detail-attributes>
+
+<div *ngIf="product.text" class="delimit">
+  <div class="content-box">
+    <div class="inner">
+      <vitra-ui-text [text]="product.text"></vitra-ui-text>
+    </div>
+  </div>
+</div>
+
+<div class="delimit">
+  <vitra-detail-relations *ngIf="product.relatedProductIds" [items]="relatedProductsListItems$ | async" [translations]="translations$ | async"
+    headingTranslationKey="productDetails.relatedProducts"></vitra-detail-relations>
+
+  <vitra-detail-relations *ngIf="product.designer" [items]="designerListItem$ | async" [translations]="translations$ | async"
+    headingTranslationKey="productDetails.relatedDesigners" parentPath="/designers"></vitra-detail-relations>
+
+  <vitra-detail-relations *ngIf="product.manufacturer" [items]="manufacturerListItem$ | async" [translations]="translations$ | async"
+    headingTranslationKey="productDetails.relatedManufacturers" parentPath="/manufacturers"></vitra-detail-relations>
+</div>

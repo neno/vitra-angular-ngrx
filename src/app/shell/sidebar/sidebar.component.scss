@@ -1,0 +1,63 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+.sidebar {
+  z-index: 15;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: $bg-color;
+
+  margin-left: -100vw;
+  transition: margin-left 0.3s ease-out;
+
+  &.is-visible {
+    margin-left: 0;
+  }
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  height: $page-header-height-s;
+  border-bottom: 1px solid $nobel;
+}
+
+.logo {
+  flex-grow: 1;
+}
+
+.toggle-nav {
+  margin-right: $gutter;
+  flex: 0;
+}
+
+@include tablet {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    width: $nav-width-t;
+    border-right: 1px solid $silver;
+    margin-left: -$nav-width-t;
+  }
+
+  .banner {
+    height: $page-header-height-t;
+  }
+
+  .toggle-nav {
+    display: none;
+  }
+}
+
+@include desktop {
+  .sidebar {
+    width: $nav-width-d;
+    margin-left: -$nav-width-d;
+  }
+}

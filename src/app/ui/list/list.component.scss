@@ -1,0 +1,138 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+:host(.is-header) .list-item {
+  border: none;
+}
+
+.list-item {
+  border-top: 1px solid $silver;
+
+  &:last-child {
+    border-bottom: 1px solid $silver;
+  }
+}
+
+:host(.no-first-top-border) .list-item {
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.list-item-link {
+  padding-right: 12px;
+  margin: 0 auto;
+  max-width: $max-content-width;
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    max-width: $max-content-width-t;
+  }
+}
+
+.list-item-thumbnail {
+  width: $thumb-size-m;
+  height: $thumb-size-m;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    // vertical-align: middle;
+    // margin: 0 auto;
+    object-fit: contain;
+
+    :host(.image-fit-cover) & {
+      object-fit: cover;
+    }
+  }
+}
+
+.list-item-description {
+  flex: 1;
+  padding: 0 $gutter;
+}
+
+.list-item-title,
+.list-item-description,
+.list-item-description-subtitle,
+.list-item-description-title {
+  margin: 0;
+}
+
+// .list-item-title,
+// .list-item-description-title,
+// .list-item-description {
+//   margin: 0;
+//   max-width: calc(100% - #{$nav-width-t});
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+.list-item-description-subtitle {
+  color: $nobel;
+}
+
+.list-item-arrow {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: $list-icon-size;
+  height: $thumb-size-d;
+
+  @include tablet {
+    width: $icon-size-t;
+    height: $icon-size-t;
+  }
+}
+
+@include tablet {
+  .list-item-thumbnail {
+    width: $thumb-size-t;
+    height: $thumb-size-t;
+  }
+}
+
+@include tablet {
+  :host(.is-header) {
+    .content-box {
+      padding: 0;
+    }
+
+    .list-item-description-title,
+    .list-item-description-subtitle,
+    .list-item-description {
+      font-size: $f-size-default-s;
+      line-height: $l-height-default-s;
+    }
+  }
+}
+
+
+@include desktop {
+  :host(.is-header) {
+    .content-box {
+      padding: 0 $gutter;
+    }
+
+    .list-item-description-title,
+    .list-item-description-subtitle,
+    .list-item-description {
+      font-size: $f-size-default-d;
+      line-height: $l-height-default-d;
+    }
+  }
+}
+
+@include xxs {
+  :host(.is-header) .list-item-thumbnail {
+    // display: none;
+    padding: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,32 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mixins";
+
+.heading {
+  @include heading;
+}
+
+.heading-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host(.toggle) ::ng-deep h2 {
+  margin: 11px 16px 11px 0;
+}
+
+:host(.no-margin) ::ng-deep h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+:host(.list-heading) .content-box {
+  max-width: calc(#{$max-content-width} - #{$icon-size-s});
+}
+
+@include tablet {
+  :host(.list-heading) .content-box {
+    max-width: calc(#{$max-content-width-t} - #{$icon-size-t});
+    padding: 0 $icon-size-t;
+  }
+}

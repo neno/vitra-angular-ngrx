@@ -1,0 +1,11 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mixins";
+
+.byline {
+  color: $nobel;
+  @include heading;
+}
+
+:host(.no-margin) .byline {
+  margin-bottom: 0;
+}

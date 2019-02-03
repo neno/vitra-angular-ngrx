@@ -1,0 +1,38 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+.wrapper {
+  position: sticky;
+  top: 0;
+  padding: 8px 0;
+  height: $page-header-height-s;
+  background: white;
+  border-bottom: 1px solid $nobel;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  flex-grow: 1;
+}
+
+.link-back,
+.toggle-nav {
+  flex-grow: 0;
+  margin: 0 $gutter;
+}
+
+@include tablet {
+  .wrapper {
+    height: $page-header-height-t;
+  }
+}
+
+@include mobile {
+  .wrapper {
+    padding: 0;
+  }
+}

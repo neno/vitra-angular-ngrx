@@ -1,0 +1,27 @@
+@import "../assets/styles/settings";
+@import "../assets/styles/mediaqueries";
+
+.page {
+  display: block;
+}
+
+.main {
+  flex: 1;
+}
+
+.center {
+  text-align: center;
+}
+
+@include tablet {
+  .page {
+    display: flex;
+  }
+}
+
+@include mobile {
+  .main.show-navigation {
+    max-height: 100vh;
+    overflow: hidden;
+  }
+}

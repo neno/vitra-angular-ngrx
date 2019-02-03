@@ -1,0 +1,18 @@
+<vitra-sticky-header [showNavigation]="showNavigation$ | async" [hasLinkBack]="true" (toggleNavigation)="toggleNavigation()"
+  (goBack)="goToList()">
+  <vitra-ui-heading [class]="designer.dating ? 'no-margin' : ''" [heading]="designer.name"></vitra-ui-heading>
+  <vitra-ui-byline class="no-margin" *ngIf="designer.dating" [text]="designer.dating"></vitra-ui-byline>
+</vitra-sticky-header>
+
+<div *ngIf="designer.markdown">
+  <div class="content-box">
+    <div class="inner">
+      <vitra-ui-text [text]="designer.markdown"></vitra-ui-text>
+    </div>
+  </div>
+</div>
+
+<div [class]="designer.markdown ? 'delimit' : ''">
+  <vitra-detail-relations *ngIf="designer.productIds.length" [items]="productListItems$ | async" [translations]="translations$ | async"
+    headingTranslationKey="designerDetails.relatedProducts" parentPath="/products"></vitra-detail-relations>
+</div>

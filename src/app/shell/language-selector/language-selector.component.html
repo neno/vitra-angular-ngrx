@@ -1,0 +1,3 @@
+<div class="content-box delimit language-selector">
+  <button [class]="lang === currentLanguage ? 'button is-current' : 'button'" *ngFor="let lang of languages" (click)="emitChangeLanguage(lang)">{{lang}}</button>
+</div>

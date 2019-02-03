@@ -1,0 +1,29 @@
+@import "../../../assets/styles/settings";
+@import "../../../assets/styles/mediaqueries";
+
+.language-selector {
+  display: flex;
+  padding-top: $gutter;
+}
+
+.button {
+  display: block;
+  text-transform: uppercase;
+  margin-right: $gutter/2;
+  color: $nobel;
+  line-height: 1;
+}
+
+.is-current {
+  color: $black;
+}
+
+@include tablet {
+  margin-right: $gutter;
+}
+
+@include mobile {
+  .content-box {
+    max-width: $mq-tablet;
+  }
+}
