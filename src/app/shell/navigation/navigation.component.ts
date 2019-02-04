@@ -16,10 +16,11 @@ import { Site, Translations, SiteId } from '../../ui/ui.model';
 export class NavigationComponent {
   @Input() sites: Site[];
   @Input() translations: Translations;
+  @Input() activeSiteId: SiteId;
 
-  @Output() navigateTo = new EventEmitter<string>();
+  @Output() navigateTo = new EventEmitter<Site>();
 
-  public emitNavigateTo(path: string) {
-    this.navigateTo.emit(path);
+  public emitNavigateTo(site: Site) {
+    this.navigateTo.emit(site);
   }
 }

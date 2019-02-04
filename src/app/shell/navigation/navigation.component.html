@@ -8,7 +8,7 @@
 </ul> -->
 <ul class="navigation">
   <li class="navigation-item" *ngFor="let site of sites">
-    <a (click)="emitNavigateTo(site.path)" class="content-box delimit navigation-item-link">
+    <a (click)="emitNavigateTo(site)" class="content-box delimit navigation-item-link" [ngClass]="site.id === activeSiteId ? 'is-active': ''">
       <span class="navigation-item-link-text">{{translations | translate:site.name}}</span>
       <vitra-icon class="navigation-item-link-icon" [icon]="'Vitra_Next'"></vitra-icon>
     </a>

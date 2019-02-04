@@ -1,7 +1,8 @@
 <div class="page">
   <vitra-sidebar [isSidebarVisible]="showNavigation | async" [searchForm]="searchForm" [sites]="sites | async"
     [languages]="languages | async" [translations]="translations | async" [currentLanguage]="currentLanguage | async"
-    [showResetSearchForm]="showResetSearchForm.getValue()" (navigateTo)="navigateTo($event)" (changeLanguage)="changeLanguage($event)"
+    [showResetSearchForm]="showResetSearchForm.getValue()" [searchPlaceholderTranslationKey]="searchPlaceholderTranslationKey | async"
+    [activeSiteId]="activeSiteId | async" (navigateTo)="navigateTo($event)" (changeLanguage)="changeLanguage($event)"
     (submitSearchForm)="submitSearchForm()" (resetSearchForm)="resetSearchForm()" (toggleNavigation)="toggleNavigation()">
   </vitra-sidebar>
   <main [class]="(showNavigation | async) ? 'main show-navigation' : 'main'">

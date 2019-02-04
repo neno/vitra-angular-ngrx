@@ -9,7 +9,8 @@
   </div>
 
   <vitra-search [searchForm]="searchForm" [showResetSearchForm]="showResetSearchForm" [translations]="translations"
-    (submitSearchForm)="submitSearchForm.emit()" (resetSearchForm)="resetSearchForm.emit()"></vitra-search>
-  <vitra-navigation [sites]="sites" [translations]="translations" (navigateTo)="navigateTo.emit($event)"></vitra-navigation>
+    [searchPlaceholderTranslationKey]="searchPlaceholderTranslationKey" (submitSearchForm)="submitSearchForm.emit()"
+    (resetSearchForm)="resetSearchForm.emit()"></vitra-search>
+  <vitra-navigation [sites]="sites" [translations]="translations" [activeSiteId]="activeSiteId" (navigateTo)="navigateTo.emit($event)"></vitra-navigation>
   <vitra-language-selector [languages]="languages" [currentLanguage]="currentLanguage" (changeLanguage)="emitChangeLanguage($event)"></vitra-language-selector>
 </div>

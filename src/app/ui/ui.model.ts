@@ -1,7 +1,7 @@
 import { IListItem } from './list/list-item.model';
 
 export type Language = 'de' | 'en';
-export type SiteId = 'Home' | 'Products' | 'Designers' | 'Manufacturers';
+export type SiteId = 'Products' | 'Designers' | 'Manufacturers';
 
 export interface Site {
   readonly id: SiteId;

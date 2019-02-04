@@ -3,19 +3,21 @@ import { Router, RouterEvent } from '@angular/router';
 import { WINDOW } from './tokens';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './reducers';
-import { Observable, Subscription, BehaviorSubject } from 'rxjs';
+import { Observable, Subscription, BehaviorSubject, Subject } from 'rxjs';
 import {
   selectShowNavigation,
   selectCurrentLang,
   selectAvailableLanguages,
-  selectSites
+  selectSites,
+  selectActiveSiteId
 } from './ui/store/ui.selectors';
 import {
   ToggleNavigation,
   ChangeLanguage,
-  InitialDataLoaded
+  InitialDataLoaded,
+  ActivateSite
 } from './ui/store/ui.actions';
-import { Language, Site, SiteMap, Translations } from './ui/ui.model';
+import { Language, Site, SiteMap, Translations, SiteId } from './ui/ui.model';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FilteredProductsRequested } from './products/store/product.actions';
@@ -37,9 +39,14 @@ export class AppComponent implements OnDestroy {
   public searchForm: FormGroup;
   public translations: Observable<Translations>;
   public showResetSearchForm = new BehaviorSubject(false);
+  public activeSiteId: Observable<SiteId>;
+  public searchPlaceholderTranslationKey = new BehaviorSubject(
+    'search.placeholder'
+  );
 
   private activeComponent: string;
   private searchFormSubscription: Subscription;
+  private activeSiteIdSubscription: Subscription;
 
   constructor(
     @Inject(WINDOW) private window: Window,
@@ -58,20 +65,23 @@ export class AppComponent implements OnDestroy {
 
     this.sites = this.store.pipe(
       select(selectSites),
-      map((sites: SiteMap) =>
-        Object.values(sites).filter((site: Site) => site.id !== 'Home')
-      )
+      map((sites: SiteMap) => Object.values(sites))
     );
 
     this.searchForm = new FormGroup({
       searchString: new FormControl(null)
     });
 
+    this.activeSiteId = this.store.pipe(select(selectActiveSiteId));
+    this.activeSiteIdSubscription = this.activeSiteId.subscribe(
+      (siteId: SiteId) => this.setSearchPlaceholderTranslationKey(siteId)
+    );
     this.observeSearchFormChanges();
   }
 
   ngOnDestroy() {
     this.searchFormSubscription.unsubscribe();
+    this.activeSiteIdSubscription.unsubscribe();
     this.showResetSearchForm.complete();
   }
 
@@ -82,9 +92,11 @@ export class AppComponent implements OnDestroy {
     }
   }
 
-  public navigateTo(path: string) {
+  public navigateTo(site: Site) {
+    this.store.dispatch(new ActivateSite({ siteId: site.id }));
     this.resetSearchForm();
-    this.router.navigate([path]);
+    this.router.navigate([site.path]);
+
     this.scrollToTop();
     if (isMobile(this.window)) {
       this.toggleNavigation();
@@ -142,5 +154,19 @@ export class AppComponent implements OnDestroy {
 
   private scrollToTop() {
     this.window.scroll(0, 0);
+  }
+
+  private setSearchPlaceholderTranslationKey(siteId: SiteId) {
+    if (siteId === 'Products') {
+      this.searchPlaceholderTranslationKey.next('searchProducts.placeholder');
+    }
+    if (siteId === 'Designers') {
+      this.searchPlaceholderTranslationKey.next('searchDesigners.placeholder');
+    }
+    if (siteId === 'Manufacturers') {
+      this.searchPlaceholderTranslationKey.next(
+        'searchManufacturers.placeholder'
+      );
+    }
   }
 }

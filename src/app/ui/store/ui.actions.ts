@@ -9,7 +9,8 @@ export enum UiActionTypes {
   LoadInitialData = '[UI] Load Initial Data',
   InitialDataLoaded = '[UI] Initial Data Loaded',
   IsLoading = '[UI] Is Loading',
-  IsDoneLoading = '[UI] Is Done Loading'
+  IsDoneLoading = '[UI] Is Done Loading',
+  ActivateSite = '[UI Activate Site]'
 }
 
 export class ChangeLanguage implements Action {
@@ -47,6 +48,11 @@ export class IsDoneLoading implements Action {
   readonly type = UiActionTypes.IsDoneLoading;
 }
 
+export class ActivateSite implements Action {
+  readonly type = UiActionTypes.ActivateSite;
+  constructor(public readonly payload: { siteId: SiteId }) {}
+}
+
 export type UiActions =
   | ChangeLanguage
   | SetCurrentSiteId
@@ -55,4 +61,5 @@ export type UiActions =
   | LoadInitialData
   | InitialDataLoaded
   | IsLoading
-  | IsDoneLoading;
+  | IsDoneLoading
+  | ActivateSite;

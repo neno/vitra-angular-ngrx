@@ -11,6 +11,7 @@ export class SearchComponent {
   @Input() searchForm: FormGroup;
   @Input() showResetSearchForm: boolean;
   @Input() translations: Translations;
+  @Input() searchPlaceholderTranslationKey: string;
 
   @Output() submitSearchForm = new EventEmitter<void>();
   @Output() resetSearchForm = new EventEmitter<void>();

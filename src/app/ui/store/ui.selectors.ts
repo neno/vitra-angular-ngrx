@@ -36,3 +36,8 @@ export const selectInitialized = createSelector(
   selectUiState,
   (uiState: UiState) => <boolean>uiState.initialized
 );
+
+export const selectActiveSiteId = createSelector(
+  selectUiState,
+  (uiState: UiState) => <SiteId>uiState.activeSiteId
+);
