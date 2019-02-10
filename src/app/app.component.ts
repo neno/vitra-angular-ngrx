@@ -112,8 +112,6 @@ export class AppComponent implements OnDestroy {
   }
 
   public submitSearchForm() {
-    // const val = this.searchForm.value['searchString'];
-    // const val = this.searchForm.get('searchString') && this.searchForm.get('searchString').value ?
     this.filterDataAccordingToActiveComponent(
       this.searchForm.get('searchString').value
     );
