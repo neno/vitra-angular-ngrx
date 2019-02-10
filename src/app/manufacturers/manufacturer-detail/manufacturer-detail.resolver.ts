@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { IManufacturer } from '../manufacturer.model';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
@@ -14,7 +10,7 @@ import { ManufacturerRequested } from '../store/manufacturer.actions';
 @Injectable()
 export class ManufacturerDetailResolver implements Resolve<IManufacturer> {
   constructor(private store: Store<AppState>) {}
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve(route: ActivatedRouteSnapshot) {
     const manufacturerId = +route.params['id'];
     return this.store.pipe(
       select(selectManufacturerById(manufacturerId)),

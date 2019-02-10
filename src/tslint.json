@@ -2,5 +2,17 @@
   "extends": "../tslint.json",
   "rules": {
     "no-empty-interface": false,
+    "directive-selector": [
+      true,
+      "attribute",
+      "vitra",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "vitra",
+      "kebab-case"
+    ]
   }
 }

@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { IResponsiveImages } from '../../products/product.model';
 import { IPicture } from './picture.model';
 
 @Component({

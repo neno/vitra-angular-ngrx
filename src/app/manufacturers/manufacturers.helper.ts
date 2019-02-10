@@ -57,7 +57,7 @@ export function mapManufacturersToListItems(
     )
     .sort((a, b) => {
       const x = a.title.toLocaleLowerCase();
-      const y = a.title.toLocaleLowerCase();
+      const y = b.title.toLocaleLowerCase();
       return x < y ? -1 : x > y ? 1 : 0;
     });
 }

@@ -1,4 +1,4 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { IDesigner } from '../designer.model';
 import { DesignerActions, DesignerActionTypes } from './designer.actions';
 import { mapDesigners } from '../designers.helper';

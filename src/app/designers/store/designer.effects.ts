@@ -32,7 +32,7 @@ export class DesignerEffects {
   loadAllDesigners$ = this.actions$.pipe(
     ofType<AllDesignersRequested>(DesignerActionTypes.AllDesignersRequested),
     withLatestFrom(this.store.pipe(select(allDesignersLoadedSelector))),
-    filter(([action, allDesignersLoaded]) => !allDesignersLoaded),
+    filter(([_action, allDesignersLoaded]) => !allDesignersLoaded),
     mergeMap(() => this.designersService.findAllDesigners()),
     map((designers: DbArtist[]) => new AllDesignersLoaded({ designers }))
   );

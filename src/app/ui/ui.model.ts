@@ -1,5 +1,3 @@
-import { IListItem } from './list/list-item.model';
-
 export type Language = 'de' | 'en';
 export type SiteId = 'Products' | 'Designers' | 'Manufacturers';
 

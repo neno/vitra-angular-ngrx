@@ -2,7 +2,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { DesignersState } from './designer.reducer';
 import * as fromDesigner from './designer.reducer';
 import { IDesigner } from '../designer.model';
-import { deepFind } from 'src/app/shared/utils';
 import { selectProductsState } from 'src/app/products/store/product.selectors';
 import { mapProductsToListItems } from 'src/app/products/products.helper';
 import { mapDesignersToListItems } from '../designers.helper';

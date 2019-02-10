@@ -4,16 +4,14 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
 import { TextComponent } from './text/text.component';
-import { MarkdownModule, MarkdownService } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
 import { HeadingComponent } from './heading/heading.component';
 import { BylineComponent } from './byline/byline.component';
 import { PictureComponent } from './picture/picture.component';
-import { DefinitionComponent } from './definition/definition.component';
 import { StoreModule } from '@ngrx/store';
 import { uiReducer } from './store/ui.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UiEffects } from './store/ui.effects';
-import { LinkItemComponent } from './link-item/link-item.component';
 import { IconComponent } from './icon/icon.component';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
@@ -27,8 +25,6 @@ import { DetailRelationsComponent } from './detail-relations/detail-relations.co
     HeadingComponent,
     BylineComponent,
     PictureComponent,
-    DefinitionComponent,
-    LinkItemComponent,
     IconComponent,
     StickyHeaderComponent,
     TranslatePipe,
@@ -49,7 +45,6 @@ import { DetailRelationsComponent } from './detail-relations/detail-relations.co
     HeadingComponent,
     BylineComponent,
     PictureComponent,
-    DefinitionComponent,
     IconComponent,
     StickyHeaderComponent,
     TranslatePipe,

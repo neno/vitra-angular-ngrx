@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IProduct, DbProduct } from '../product.model';
-import { Update } from '@ngrx/entity';
+import { DbProduct } from '../product.model';
 
 export enum ProductActionTypes {
   ProductRequested = '[Product Detail] Product Requested',

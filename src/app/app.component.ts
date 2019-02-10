@@ -3,7 +3,7 @@ import { Router, RouterEvent } from '@angular/router';
 import { WINDOW } from './tokens';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './reducers';
-import { Observable, Subscription, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import {
   selectShowNavigation,
   selectCurrentLang,
@@ -27,7 +27,7 @@ import { TranslationService } from './translation.service';
 import { isMobile } from './shared/utils';
 
 @Component({
-  selector: 'app-root',
+  selector: 'vitra-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -112,6 +112,8 @@ export class AppComponent implements OnDestroy {
   }
 
   public submitSearchForm() {
+    // const val = this.searchForm.value['searchString'];
+    // const val = this.searchForm.get('searchString') && this.searchForm.get('searchString').value ?
     this.filterDataAccordingToActiveComponent(
       this.searchForm.get('searchString').value
     );

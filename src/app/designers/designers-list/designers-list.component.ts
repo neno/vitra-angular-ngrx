@@ -14,7 +14,7 @@ import {
 import { ToggleNavigation } from 'src/app/ui/store/ui.actions';
 
 @Component({
-  selector: 'app-designers-list',
+  selector: 'vitra-designers-list',
   templateUrl: './designers-list.component.html',
   styleUrls: ['./designers-list.component.scss']
 })

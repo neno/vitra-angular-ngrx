@@ -30,7 +30,7 @@ import { Translations } from 'src/app/ui/ui.model';
 import { TranslationService } from 'src/app/translation.service';
 
 @Component({
-  selector: 'app-product-detail',
+  selector: 'vitra-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })

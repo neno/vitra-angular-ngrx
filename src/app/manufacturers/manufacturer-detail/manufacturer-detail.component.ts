@@ -14,7 +14,7 @@ import { selectShowNavigation } from 'src/app/ui/store/ui.selectors';
 import { ToggleNavigation } from 'src/app/ui/store/ui.actions';
 
 @Component({
-  selector: 'app-manufacturer-detail',
+  selector: 'vitra-manufacturer-detail',
   templateUrl: './manufacturer-detail.component.html',
   styleUrls: ['./manufacturer-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

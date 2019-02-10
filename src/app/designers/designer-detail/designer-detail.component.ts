@@ -13,7 +13,7 @@ import { ToggleNavigation } from 'src/app/ui/store/ui.actions';
 import { selectShowNavigation } from 'src/app/ui/store/ui.selectors';
 
 @Component({
-  selector: 'app-designer-detail',
+  selector: 'vitra-designer-detail',
   templateUrl: './designer-detail.component.html',
   styleUrls: ['./designer-detail.component.scss']
 })

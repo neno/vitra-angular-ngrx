@@ -6,7 +6,7 @@ import { AppState } from './reducers';
 import { selectCurrentLang } from './ui/store/ui.selectors';
 import { map } from 'rxjs/operators';
 import { Language, Translations } from './ui/ui.model';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

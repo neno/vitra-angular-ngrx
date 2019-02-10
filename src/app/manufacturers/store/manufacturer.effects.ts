@@ -25,7 +25,7 @@ export class ManufacturerEffects {
       ManufacturerActionTypes.AllManufacturersRequested
     ),
     withLatestFrom(this.store.pipe(select(allManufacturersLoadedSelector))),
-    filter(([action, allManufacturersLoaded]) => !allManufacturersLoaded),
+    filter(([_action, allManufacturersLoaded]) => !allManufacturersLoaded),
     mergeMap(() => this.manufacturersService.findAllManufacturers()),
     map(
       (manufacturers: DbArtist[]) =>

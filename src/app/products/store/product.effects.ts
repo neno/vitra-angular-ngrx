@@ -33,7 +33,7 @@ export class ProductEffects {
   loadAllProducts = this.actions$.pipe(
     ofType<AllProductsRequested>(ProductActionTypes.AllProductsRequested),
     withLatestFrom(this.store.pipe(select(allProductsLoadedSelector))),
-    filter(([action, allProductsLoaded]) => !allProductsLoaded),
+    filter(([_action, allProductsLoaded]) => !allProductsLoaded),
     mergeMap(() => this.productsService.findAllProducts()),
     map((products: DbProduct[]) => new AllProductsLoaded({ products }))
   );
@@ -42,8 +42,8 @@ export class ProductEffects {
   loadProductsByIds = this.actions$.pipe(
     ofType<ProductsRequestedByIds>(ProductActionTypes.ProductsRequestedByIds),
     withLatestFrom(this.store.pipe(select(allProductsLoadedSelector))),
-    filter(([action, allProductsLoaded]) => !allProductsLoaded),
-    mergeMap(([action, allProductsLoaded]) =>
+    filter(allProductsLoaded => !allProductsLoaded),
+    mergeMap(([action, _allProductsLoaded]) =>
       this.productsService.findProductsByIds(action.payload.productIds)
     ),
     map((products: DbProduct[]) => new ProductsLoadedByIds({ products }))
