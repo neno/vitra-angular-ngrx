@@ -1,6 +1,6 @@
 # Vitra-Angular-Ngrx
 
-This is a simplified demo version of the Vitra Design Museum Intranet WebApp that is used as a Exhibition Guide implemented in Angular using Ngrx for state management.
+This is a simplified demo version of the Vitra Design Museum Intranet WebApp that is used as an Exhibition Guide. This version was implemented in Angular using Ngrx for state management.
 
 ## Installation
 
