@@ -4,7 +4,7 @@ This is a simplified demo version of the Vitra Design Museum Intranet WebApp tha
 
 ## Installation
 
-Go to root directory which contain a package.json file and run `npm install`:
+Go to the root directory which contains a package.json file and run `npm install`:
 
 ```
 npm install
